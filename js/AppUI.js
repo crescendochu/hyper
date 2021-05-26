@@ -125,7 +125,7 @@ AppUI.prototype.update = function () {
 AppUI.prototype._initCreatorMenu = function () {
 	var _this = this
 	var creatorMenuData = {
-	        title : 'Create Object',
+	        title : 'Create ',
 		location: 'bottom',
 	        subMenus : {
 			'Basic Geometries' : {			
@@ -137,7 +137,7 @@ AppUI.prototype._initCreatorMenu = function () {
 				ring	: THREEx.ARAppletBuilder.nameToLabel['ring'],
 				torusKnot: THREEx.ARAppletBuilder.nameToLabel['torusKnot'],
 			},
-			'Media' : {
+			'Multimedia' : {
 				text_arjs_moto	: THREEx.ARAppletBuilder.nameToLabel['text_arjs_moto'],
 				image_arjs_logo	: THREEx.ARAppletBuilder.nameToLabel['image_arjs_logo'],
 				video_sintel	: THREEx.ARAppletBuilder.nameToLabel['video_sintel'],
@@ -150,7 +150,7 @@ AppUI.prototype._initCreatorMenu = function () {
 	})
 	domElement.style.position = 'fixed'
 	domElement.style.bottom = '0%'
-	domElement.style.left = '0%'
+	domElement.style.right = '11em'
 	document.body.appendChild(domElement)	
 	
 	domElement.id = 'creatorsList'

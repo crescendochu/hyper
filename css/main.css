@@ -1,7 +1,7 @@
 body  {
 	margin : 0px; 
 	overflow: hidden;
-	font-family: arial; 
+	font-family: Poppins; 
 	user-select: none;
 }
 
@@ -20,7 +20,7 @@ body  {
 	z-index:1;	
 }
 .menuList ul {
-	background : rgba(255,255,255,0.3);
+	background : rgba(255, 255, 255,0.6);
 	list-style: none outside none;
 	margin: 0px;
 	padding: 0;
@@ -34,30 +34,38 @@ body  {
 }
 
 .menuList ul li.selected {
-	background: lightgray;
+	background: white;
+	color:#00ABB3;
+	font-weight: 600;
 }
 
 .menuList ul li:hover {
 	cursor: pointer;
-	background: gray;
+	background:rgba(255, 255, 255,0.9);
 }
 .menuList .title {
-	background : rgba(255,255,255,0.3);
-	text-align: center;
-	min-width: 10em;
-	padding-top: 1em;
-	padding-bottom: 1em;
+	background : rgba(255,255,255,0.8);
+	text-align: left;
+	min-width: 9em;
+	padding-left:0.5em;
+	padding-top:0.5em;
+	padding-bottom:0.5em;
 }
 
 .menuList.location_bottom .title {
-	border-top: thin dashed #444;
+	border-top: 3px solid #00BDC6;
 }
 .menuList.location_top .title {
-	border-bottom: thin dashed #444;
+	border-bottom: 3px solid #00BDC6;
 }
 
 .menuList.collapsed .title:after {
-	content: '+';
+	font-family: "FontAwesome";
+	content: "\f106";
+	display: inline-block;
+	padding-right: 3px;
+	align-items: center;
+	font-weight: 900;
 }
 
 .menuList.collapsed ul.container {
@@ -66,7 +74,7 @@ body  {
 
 .menuList .title:hover {
 	cursor: pointer;
-	background: gray;
+	background: rgba(255, 255, 255);
 }
 
 /* ---------------------------------------------------------------------------*/
@@ -75,11 +83,11 @@ body  {
 #optionsMenu {
 	position: fixed; 
 	bottom: 0px; 
-	right: 11em; 
+	left: 13em; 
 }
 #optionsMenu .title {
 	min-width: 11em;
-	border-top: thin dashed #444;
+	border-top: 3px solid #00BDC6;
 }
 
 /* ---------------------------------------------------------------------------*/
@@ -88,7 +96,7 @@ body  {
 #areaMenu {
 	position: fixed; 
 	bottom: 0px; 
-	right: 23em; 
+	left: 0; 
 }
 
 @media screen and (orientation:portrait) {
@@ -102,18 +110,18 @@ body  {
 
 #areaMenu .title {
 	min-width: 11em;
-	border-top: thin dashed #444;
+	border-top: 3px solid #00BDC6;
 }
 
 /* ---------------------------------------------------------------------------*/
 
 #creatorsList {
 	position: fixed; 
-	bottom: 0px; 
-	left: 0px; 
+	bottom: 0px;
 }
 #creatorsList .title {
-	border-top: thin dashed #444;
+	min-width: 11em;
+	border-top: 3px solid #00BDC6;
 }
 
 /* ---------------------------------------------------------------------------*/
@@ -124,7 +132,7 @@ body  {
 	right: 0px; 
 }
 #objectList .title {
-	border-top: thin dashed #444;
+	border-top: 3px solid #00BDC6;
 }
 
 #objectList ul li .buttonDelete {
@@ -138,7 +146,7 @@ body  {
 }
 
 #objectList ul li .buttonDelete:hover {
-	color: white;
+	color: #00BDC6;
 }
 
 #objectList ul li .buttonSettings {
@@ -153,3 +161,14 @@ body  {
 #objectList ul li .buttonSettings:hover {
 	color: white;
 }
+
+/* input {
+	width: 50%;
+	height:3em;
+	position:fixed;
+	left:11em;
+  } */
+
+  button {
+	  font-family: inherit;
+  }

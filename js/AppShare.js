@@ -25,7 +25,7 @@ var AppShare = function(app){
 			if (win) win.focus()
 			// // FIXME this requires a trusted-event. but the url shortening make it async
 			// // - how to fix that. do a popup with only the url, and another step to copy
-			var inputElement = document.createElement('input')
+			var inputElement = document.createElement('textarea')
 			inputElement.style.zIndex = 99
 			document.body.appendChild(inputElement)
 			inputElement.value = shareURL
@@ -65,10 +65,12 @@ AppShare.prototype._buildShareURL = function (callback) {
 	// })
     // var win = window.open(contentURL, '_blank');
 	// 		if (win) win.focus()
-    var inputElement = document.createElement('input')
+    var inputElement = document.createElement('textarea')
 			inputElement.style.zIndex = 99
             inputElement.style.width = 10
 			document.body.appendChild(inputElement)
+			input.cols = "80";
+			input.rows = "40";
 			inputElement.value = contentURL
 			inputElement.focus();
 			inputElement.select();
