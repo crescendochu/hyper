@@ -1,0 +1,155 @@
+body  {
+	margin : 0px; 
+	overflow: hidden;
+	font-family: arial; 
+	user-select: none;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* from https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile*/
+@media (max-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+	.menuList {
+		zoom: 0.8;
+	}
+}
+
+.menuList {
+	margin: 0;
+	padding: 0;
+	z-index:1;	
+}
+.menuList ul {
+	background : rgba(255,255,255,0.3);
+	list-style: none outside none;
+	margin: 0px;
+	padding: 0;
+}
+.menuList ul li {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin: 0;
+}
+
+.menuList ul li.selected {
+	background: lightgray;
+}
+
+.menuList ul li:hover {
+	cursor: pointer;
+	background: gray;
+}
+.menuList .title {
+	background : rgba(255,255,255,0.3);
+	text-align: center;
+	min-width: 10em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.menuList.location_bottom .title {
+	border-top: thin dashed #444;
+}
+.menuList.location_top .title {
+	border-bottom: thin dashed #444;
+}
+
+.menuList.collapsed .title:after {
+	content: '+';
+}
+
+.menuList.collapsed ul.container {
+	display: none;
+}
+
+.menuList .title:hover {
+	cursor: pointer;
+	background: gray;
+}
+
+/* ---------------------------------------------------------------------------*/
+
+
+#optionsMenu {
+	position: fixed; 
+	bottom: 0px; 
+	right: 11em; 
+}
+#optionsMenu .title {
+	min-width: 11em;
+	border-top: thin dashed #444;
+}
+
+/* ---------------------------------------------------------------------------*/
+
+
+#areaMenu {
+	position: fixed; 
+	bottom: 0px; 
+	right: 23em; 
+}
+
+@media screen and (orientation:portrait) {
+	#areaMenu {
+		top: 0px;
+		bottom: auto;
+		right: auto;
+		left: 0px
+	}
+}
+
+#areaMenu .title {
+	min-width: 11em;
+	border-top: thin dashed #444;
+}
+
+/* ---------------------------------------------------------------------------*/
+
+#creatorsList {
+	position: fixed; 
+	bottom: 0px; 
+	left: 0px; 
+}
+#creatorsList .title {
+	border-top: thin dashed #444;
+}
+
+/* ---------------------------------------------------------------------------*/
+
+#objectList {
+	position: fixed; 
+	bottom: 0px; 
+	right: 0px; 
+}
+#objectList .title {
+	border-top: thin dashed #444;
+}
+
+#objectList ul li .buttonDelete {
+	color: #888;
+	font-size: 1em;
+	padding-right: 0.5em;
+	/*padding: 0.5em;*/
+}
+#objectList ul li:hover .buttonDelete {
+	color: black;
+}
+
+#objectList ul li .buttonDelete:hover {
+	color: white;
+}
+
+#objectList ul li .buttonSettings {
+	font-size: 1em;
+    	color: #888;
+	float: right;
+}
+#objectList ul li:hover .buttonSettings {
+	color: black;
+}
+
+#objectList ul li .buttonSettings:hover {
+	color: white;
+}

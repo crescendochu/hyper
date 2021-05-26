@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
+<meta name="theme-color">
+<link rel="manifest" href="manifest.json">
+
+<!-- add a favicon -->
+<link rel="icon" href="https://jeromeetienne.github.io/AR.js/data/logo/logo-alone-64x64.png">
+
+
+<body>	
+	<div style='position: absolute; top: 10px; left: 0;width:100%; text-align: center;z-index:1';>
+		<!-- <a href='https://webxr.io/webar-playground/'>WebAR Playground</a>
+		by <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
+		<div>Create Augmented Reality in a Few Clicks 
+			with <a href='https://github.com/jeromeetienne/ar.js' target='_blank'>AR.js</a>
+		</div> -->
+		<div id="arjsDebugUIContainer"></div>
+	</div>
+
+
+
+	<link rel="stylesheet" href="css/main.css" />
+	<!-- options list -->
+	<div id='areaMenu' class='menuList collapsed'>	
+		<ul class='container'>
+			<li id='selectTrackingBackend'>
+				<label>Tracking :
+					<select name="select">
+						<option value="artoolkit">artoolkit</option> 
+						<option value="aruco">aruco</option> 
+						<option value="tango">tango</option> 
+					</select>
+				</label>
+			</li>
+			<li id='checkboxMarkerHelpers'>
+				<label>Marker Helpers
+					<input  type="checkbox"/>
+				</label>
+			</li>
+			<li id='buttonResetMultiMarker'>
+				Reset Area
+			</li>
+			<li id='buttonLearnMultiMarker'>
+				Learn Area
+			</li>
+		</ul>
+		<div class='title'>
+			Area
+		</div>
+	</div>
+
+	<!-- options list -->
+	<div id='optionsMenu' class='menuList collapsed'>	
+		<ul class='container'>
+			<li id='buttonFullscreen'>
+				Toggle Fullscreen
+			</li>
+			<li id='buttonResetAR'>
+				Reset AR
+			</li>
+			<li id='exportURLToClipboard'>
+				Export Share URL
+			</li>
+			<!-- <li id='exportURLToTwitter'>
+				Share on Twittter
+			</li>
+			<li id='exportURLToFacebook'>
+				Share on Facebook
+			</li> -->
+			<li id='checkboxEnableTorch' style='display: none;'>
+				<label>Enable Torch
+					<input  type="checkbox"/>
+				</label>
+			</li>
+		</ul>
+		<div class='title'>
+			Options
+		</div>
+	</div>
+
+	<!-- object list -->
+	<div id='objectList' class='menuList'>
+		<ul class='container'></ul>
+		<div class="title">
+			Current Objects
+		</div>
+	</div>
+
+	<!-- Scanning animation when the marker are not visible -->
+	<link rel="stylesheet" href="css/spinnerScanning.css" />
+	<div class="spinnerScanning">
+		<label>Scanning</label>
+		<div class="rect1"></div>
+		<div class="rect2"></div>
+		<div class="rect3"></div>
+	</div>
+
+	<!-- Scanning animation when the marker are not visible -->
+	<link rel="stylesheet" href="css/spinnerLoading.css" />
+	<div class="spinnerLoading" ></div>
+
+	<!-- Scanning animation when scene is saving -->
+	<link rel="stylesheet" href="css/spinnerSaving.css" />
+	<div class="spinnerSaving" >Saving</div>
+
+
+<!-- hammer.js for gesture recognition on screen -->
+<script src='vendor/hammer.min.js'></script>
+<script src='vendor/hammer-time.min.js'></script>
+
+<!-- include three.js -->
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/build/three.min.js'></script>
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/examples/js/loaders/GLTFLoader.js'></script>
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/examples/js/loaders/GLTF2Loader.js'></script>
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/examples/js/loaders/OBJLoader.js'></script>
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/examples/js/loaders/MTLLoader.js'></script>
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/examples/js/loaders/DDSLoader.js'></script>
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/examples/js/libs/stats.min.js'></script>
+
+<!-- three.js library -->
+<script src='vendor/ar.js/three.js/examples/vendor/three.js/build/three.js'></script>
+<!-- include for artoolkit trackingBackend -->
+<script src='vendor/ar.js/three.js/vendor/jsartoolkit5/build/artoolkit.min.js'></script>
+<script src='vendor/ar.js/three.js/vendor/jsartoolkit5/js/artoolkit.api.js'></script>
+<!-- include for aruco trackingBackend -->
+<script src='vendor/ar.js/three.js/vendor/js-aruco/src/svd.js'></script>
+<script src='vendor/ar.js/three.js/vendor/js-aruco/src/posit1.js'></script>
+<script src='vendor/ar.js/three.js/vendor/js-aruco/src/cv.js'></script>
+<script src='vendor/ar.js/three.js/vendor/js-aruco/src/aruco.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-aruco/threex-arucocontext.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-aruco/threex-arucodebug.js'></script>
+<!-- include for tango trackingBackend -->
+<script src='vendor/ar.js/three.js/vendor/chromium-tango/THREE.WebAR.js'></script>
+<!-- include ar.js -->
+<script src='vendor/ar.js/three.js/src/threex/threex-artoolkitsource.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-artoolkitcontext.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-artoolkitprofile.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-arbasecontrols.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-armarkercontrols.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-armarkerhelper.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-arsmoothedcontrols.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-hittesting-plane.js'></script>
+<script src='vendor/ar.js/three.js/src/threex/threex-hittesting-tango.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-utils.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-session.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-anchor.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-hittesting.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-tangovideomesh.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-tangopointcloud.js'></script>
+<script src='vendor/ar.js/three.js/src/new-api/arjs-debugui.js'></script>
+<script src='vendor/ar.js/three.js/src/markers-area/threex-armultimarkerutils.js'></script>
+<script src='vendor/ar.js/three.js/src/markers-area/threex-armultimarkercontrols.js'></script>
+<script src='vendor/ar.js/three.js/src/markers-area/threex-armultimarkerlearning.js'></script>
+<script>ARjs.Context.baseURL = 'vendor/ar.js/three.js/'</script>
+
+
+<script src='vendor/ar.js/three.js/src/threex/threex-arclickability.js'></script>
+
+
+<!-- include applets -->
+<script src='threex/arAppletBuilder/threex-arappletbuilder.js'></script>
+<script src='threex/arAppletBuilder/threex-arapplet-bouncingball.js'></script>
+<script src='threex/arAppletBuilder/threex-arapplet-model.js'></script>
+<script src='threex/arAppletBuilder/threex-arapplet-minecraft.js'></script>
+<script src='threex/arAppletBuilder/threex-arapplet-geometricshapes.js'></script>
+<script src='threex/arAppletBuilder/threex-arapplet-registering.js'></script>
+<script src='threex/refraction/threex.refractionmaterial.js'></script>
+<script src='threex/refraction/threex.refractionmodels.js'></script>
+<script src='threex/hole-in-the-wall/threex.holeinthewall.js'></script>
+<script src='threex/holographic-message/threex-holographicmessage.js'></script>
+<script src='threex/threex-bmfonttext/threex-bmfonttext.js'></script>
+<script src='threex/threex-bmfonttext/threex-bmfonttextimport.js'></script>
+<script src='threex/threex.minecraft/threex.minecraft.js'></script>
+<script src='threex/threex.minecraft/threex.minecraftcontrols.js'></script>
+<script src='threex/threex.minecraft/threex.animation.js'></script>
+<script src='threex/threex.minecraft/threex.animations.js'></script>
+<script src='threex/threex.minecraft/threex.minecraftcharheadanim.js'></script>
+<script src='threex/threex.minecraft/threex.minecraftcharbodyanim.js'></script>
+<script src='threex/threex.minecraft/threex.minecraftnickname.js'></script>
+<script src='threex/threex.minecraft/threex.minecraftbubble.js'></script>
+<script>THREEx.ARAppletBuilder.baseURL = 'threex/arAppletBuilder/'</script>
+
+
+<!-- for goo.gl url shortener - TODO make it local -->
+<script defer src='https://apis.google.com/js/client.js'></script>
+<!-- materials icons font -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- include dialog-polyfill.js for dialog domElementk -->
+<script src="vendor/dialog-polyfill/dialog-polyfill.js" charset="utf-8"></script>
+
+<!-- application javascript -->
+<script src='js/App.js'></script>
+<script src='js/AppGesture.js'></script>
+<script src='js/AppShare.js'></script>
+<script src='js/AppUI.js'></script>
+<script src='js/ContentLocalStorage.js'></script>
+<script src='js/UIAutoHide.js'></script>
+<script src='js/TwoLevelsMenu.js'></script>
+
+<script src='js/main.js'></script>
+
+</body>
