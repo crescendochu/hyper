@@ -196,7 +196,7 @@ App.prototype.createApplet = function (sceneType) {
 
 		// create settingsElement
 		var settingsElement = document.createElement('i')
-		settingsElement.innerHTML = 'settings'
+		settingsElement.innerHTML = 'mode'
 		settingsElement.classList.add('material-icons')
 		settingsElement.classList.add('buttonSettings')
 		settingsElement.addEventListener('click', onConfig)

@@ -66,15 +66,15 @@ AppShare.prototype._buildShareURL = function (callback) {
     // var win = window.open(contentURL, '_blank');
 	// 		if (win) win.focus()
     var inputElement = document.createElement('textarea')
-			inputElement.style.zIndex = 99
+			inputElement.style.zIndex = -99
             inputElement.style.width = 10
 			document.body.appendChild(inputElement)
-			input.cols = "80";
-			input.rows = "40";
 			inputElement.value = contentURL
 			inputElement.focus();
 			inputElement.select();
-    			document.execCommand('copy');	
+    			document.execCommand('copy');
+				alert("Shareable link copied to clipboard :)");
+			inputElement.style.display = "none"	
 };
 
 // AppShare.prototype._minifyURL = function (longURL, onComplete) {
