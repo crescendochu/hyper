@@ -1,3 +1,5 @@
+// const fs2 = require('fs');
+
 var App = function(arWorldRoot, trackingBackend){
 	var _this = this
 	this.applets = {}
@@ -265,6 +267,8 @@ App.prototype.resetFullScene = function () {
 //////////////////////////////////////////////////////////////////////////////
 
 App.prototype.appletsToJSON = function(){
+	
+
 	var _this = this
 	var jsonData = {
 		applets: []
@@ -282,7 +286,12 @@ App.prototype.appletsToJSON = function(){
 			poseMatrix: parentObject3D.matrix.toArray()
 		})
 	})
-	
+	console.log("here"  + jsonData)
+	const fs =require('fs')
+
+	let data = JSON.stringify(jsonData);
+	fs.writeFileSync('test.json', data);
+
 	return jsonData
 }
 
