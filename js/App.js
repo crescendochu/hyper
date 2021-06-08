@@ -1,5 +1,3 @@
-// const fs2 = require('fs');
-
 var App = function(arWorldRoot, trackingBackend){
 	var _this = this
 	this.applets = {}
@@ -287,10 +285,6 @@ App.prototype.appletsToJSON = function(){
 		})
 	})
 	console.log("here"  + jsonData)
-	const fs =require('fs')
-
-	let data = JSON.stringify(jsonData);
-	fs.writeFileSync('test.json', data);
 
 	return jsonData
 }
