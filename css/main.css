@@ -172,3 +172,8 @@ body  {
   button {
 	  font-family: inherit;
   }
+
+  #showAll{
+	  color:blue;
+	  z-index:999999;
+  }

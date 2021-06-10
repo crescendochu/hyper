@@ -10,6 +10,11 @@ var AppUI = function(app){
 	})
 
 
+	document.querySelector('#showAll').addEventListener('click', function(){
+		app.showAll()
+	})
+
+
 	if( this._app.trackingBackend !== 'tango' ){
 		this._initMarkerUI()
 	}

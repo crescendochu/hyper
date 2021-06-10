@@ -289,7 +289,6 @@ App.prototype.appletsToJSON = function () {
       poseMatrix: parentObject3D.matrix.toArray(),
     });
   });
-  var aa = { name: "Odinfono Emmanuel", phone: "1234567890" };
   $.ajax({
     method: "POST",
     url: "http://localhost:3000/1",
@@ -319,6 +318,37 @@ App.prototype.appletsFromJSON = function (jsonData) {
     );
   });
 };
+
+
+App.prototype.showAll = function (){
+  var allContent = null;
+  $.ajax({ 
+      method: "GET",
+      url: "http://localhost:3000/1",
+      dataType: "jsonp",
+      crossDomain: true,
+      headers: {'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'},
+      success: function(data) {
+        console.log(JSON.stringify(data));
+        allContent = data;
+      },
+      error: function(data, status, error) {
+        console.log(data);
+        console.log(status)
+        console.log(error)
+    }
+  });
+  console.log ("Hiiii")
+  console.log (allContent)
+  this.appletsFromJSON(allContent)
+}
+
+function renderList(data) {
+  alert(data);
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 //		Code Separator
 //////////////////////////////////////////////////////////////////////////////
