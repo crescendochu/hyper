@@ -14,7 +14,7 @@ app.use(
 app.use(express.json());
 
 app.post("/1", function (req, res) {
-  // var id = new Date().getTime();
+  var id = new Date().getTime();
   var userData = JSON.stringify(req.body);
   // data.push({
   //   id: id,
@@ -23,7 +23,7 @@ app.post("/1", function (req, res) {
   data.push(userData)
   console.log(data);
 
-  // fs.writeFile("test.txt", JSON.stringify(req.body), (err) => {
+  // fs.appendFile("test.txt", JSON.stringify(req.body), (err) => {
   //   if (err) throw err;
   //   console.log("The file has been saved!");
   //   return;

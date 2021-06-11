@@ -321,24 +321,25 @@ App.prototype.appletsFromJSON = function (jsonData) {
 
 
 App.prototype.showAll = function (){
-  var allContent = null;
-  $.ajax({ 
-      method: "GET",
-      url: "http://localhost:3000/1",
-      dataType: "jsonp",
-      crossDomain: true,
-      headers: {'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'},
-      success: function(data) {
-        console.log(JSON.stringify(data));
-        allContent = data;
-      },
-      error: function(data, status, error) {
-        console.log(data);
-        console.log(status)
-        console.log(error)
-    }
-  });
-  console.log ("Hiiii")
+  var allContent= null;
+  var allContent = {"applets":[{"type":"cone","poseMatrix":["1","0","0","0","0","1","0","0","0","0","1","0","0","0","0","1"]},{"type":"octahedron","poseMatrix":["1","0","0","0","0","1","0","0","0","0","1","0","1.7612580632111765","1.776356839400251e-15","-0.16799064400041233","1"]}]};
+  // $.ajax({ 
+  //     method: "GET",
+  //     url: "http://localhost:3000/1",
+  //     dataType: "jsonp",
+  //     crossDomain: true,
+  //     headers: {'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'},
+  //     success: function(data) {
+  //       console.log(JSON.stringify(data));
+  //       allContent = data;
+  //     },
+  //     error: function(data, status, error) {
+  //       console.log(data);
+  //       console.log(status)
+  //       console.log(error)
+  //   }
+  // });
+  // console.log ("Hiiii")
   console.log (allContent)
   this.appletsFromJSON(allContent)
 }
